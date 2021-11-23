@@ -21,6 +21,10 @@ Controls.Add(webView);
 webView.CoreWebView2.Navigate("https://nuget.org/");
 ```
 
+#### Samples
+
+You can found samples in [Samples](https://github.com/ProKn1fe/WebView2.Runtime/tree/master/Samples) directory.
+
 #### Build nupkg:
 1) Clone repository.
 2) Download latest .cab files from fixed version section and put in build directory (as in picture) - https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section.
