@@ -12,7 +12,7 @@
 ```
 Install-Package WebView2.Runtime.X64
 ```
-2) Set copy WebView2 folder to application directory.
+2) Make sure what in you project appears folder WebView2 and all files marked as "Copy To Output".
 3) Initialize webview2 before usage, path must be to WebView2 directory. In most cases it must be in application directory.
 ``` C#
 var webView = new WebView2() { Dock = DockStyle.Fill };
