@@ -1,0 +1,27 @@
+﻿<Window x:Class="WebView2.FinFormsAndWpfSample.WPFWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:local="clr-namespace:WebView2.FinFormsAndWpfSample"
+        mc:Ignorable="d"
+        Title="WPFWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="64" />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="URL:" Margin="5,2,5,0" />
+        <TextBox Text="{Binding Url}" Margin="5" Grid.Column="1" />
+        <Button Content="Go" Click="GoClicked" Margin="5" Grid.Column="2" />
+
+        <wv2:WebView2 Name="webView" Grid.Row="1" Grid.ColumnSpan="3" />
+    </Grid>
+</Window>

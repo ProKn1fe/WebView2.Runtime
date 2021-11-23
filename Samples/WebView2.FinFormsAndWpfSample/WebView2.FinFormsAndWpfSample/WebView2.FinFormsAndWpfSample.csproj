@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<NoWarn>CS0067</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="microsoft.web.webview2" Version="1.0.1020.30" />
+	  <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" PrivateAssets="All" />
+	  <PackageReference Include="WebView2.Runtime.X64" Version="96.0.1054.29" />
+	</ItemGroup>
+
+</Project>

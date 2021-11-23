@@ -1,0 +1,28 @@
+﻿<Window x:Class="WebView2.FinFormsAndWpfSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WebView2.FinFormsAndWpfSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="64" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Content="WinForms Sample" Click="OpenWinFormsWin"
+                    Margin="10" Grid.Row="1" Grid.Column="1" />
+            <Button Content="WPF Sample" Click="OpenWpfWin"
+                    Margin="10" Grid.Row="1" Grid.Column="2" />
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31911.260
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebView2.FinFormsAndWpfSample", "WebView2.FinFormsAndWpfSample\WebView2.FinFormsAndWpfSample.csproj", "{3B84DFFC-8AE5-45D4-B7E4-6D14610E527D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B84DFFC-8AE5-45D4-B7E4-6D14610E527D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B84DFFC-8AE5-45D4-B7E4-6D14610E527D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B84DFFC-8AE5-45D4-B7E4-6D14610E527D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B84DFFC-8AE5-45D4-B7E4-6D14610E527D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {589035B1-7BC3-4F82-B289-F3583BDB3E2E}
+	EndGlobalSection
+EndGlobal
