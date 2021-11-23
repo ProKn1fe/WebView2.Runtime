@@ -18,5 +18,8 @@
     <dependencies>
       <dependency id="Microsoft.Web.WebView2" version="1.0.1020.30" />
     </dependencies>
+	<contentFiles>
+		<files include="any/any/**/*.*" buildAction="none" copyToOutput="true" />
+	</contentFiles>
   </metadata>
 </package>

@@ -11,16 +11,16 @@ foreach ($file in $files)
 	
 	# Remove exists directory
 	if (Test-Path $output_path) { Remove-Item $output_path -Recurse -Force; }
-	New-Item -ItemType Directory -Force -Path "$output_path\content\";
+	New-Item -ItemType Directory -Force -Path "$output_path\contentFiles\any\any\";
 	
 	# Unpack cab
-	cmd.exe /c "$PSScriptRoot\Utils\expand.exe -F:* $($file.FullName) $output_path\content\";
+	cmd.exe /c "$PSScriptRoot\Utils\expand.exe -F:* $($file.FullName) $output_path\contentFiles\any\any\";
 	
 	# Now we need rename folder in content directory
-	Get-ChildItem "$output_path\content\" -Directory | Rename-Item -NewName "WebView2";
+	Get-ChildItem "$output_path\contentFiles\any\any\" -Directory | Rename-Item -NewName "WebView2";
 	
 	#Parse version from manifest
-	$version_file = Get-ChildItem "$output_path\content\" -Filter "*.manifest" -Recurse;
+	$version_file = Get-ChildItem "$output_path\contentFiles\" -Filter "*.manifest" -Recurse;
 	$version = $version_file[0].Name.Replace(".manifest", "");
 	
 	# Copy nuspec and replace vars
