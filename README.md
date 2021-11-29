@@ -1,13 +1,14 @@
-### Nuget packages for Microsoft WebView2 Fixed Runtime Distribution
+## Nuget packages for Microsoft WebView2 Fixed Runtime Distribution
 
-#### Nuget packages:
+### Nuget packages:
 | Platform | Architecture | Package Name | Version
 | --- | --- | --- | --- |
 | Windows | X86 | WebView2.Runtime.X86 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X86.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X86/) |
 | Windows | X64 | WebView2.Runtime.X64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X64/) |
 | Windows | ARM64 | WebView2.Runtime.ARM64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.ARM64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) |
+| Windows | Any | WebView2.Runtime.AutoInstaller | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.AutoInstaller.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) |
 
-#### Usage example:
+### Usage example:
 1) Install via nuget selected architecture package.
 ```
 Install-Package WebView2.Runtime.X64
@@ -21,16 +22,36 @@ Controls.Add(webView);
 webView.CoreWebView2.Navigate("https://nuget.org/");
 ```
 
-#### Samples
+### Automate runtime installer (this type doesen't need runtime packages, because runtime will be installed into system):
+You can use my package to check current WebView2 runtime installed status and automate install it.
+This type of installation requires running the program as an administrator (or installer will request them independently).
+Source of this library [you can find here](https://github.com/ProKn1fe/WebView2.Runtime/tree/master/WebView2.Runtime.AutoInstaller).
+1) Install via nuget selected architecture package.
+```
+Install-Package WebView2.Runtime.AutoInstaller
+```
+2) Use
+``` C#
+// Check and install if not installed
+await WebView2AutoInstaller.CheckAndInstallAsync();
+// Only check, return true or false
+await WebView2AutoInstaller.CheckAndInstallAsync(true);
+// Show runtime installer window
+await WebView2AutoInstaller.CheckAndInstallAsync(false, false);
+// Set custom path to runtime installer (maybee you put it into application resources).
+await WebView2AutoInstaller.CheckAndInstallAsync(false, false, "path");
+```
+
+### Samples
 
 You can found samples in [Samples](https://github.com/ProKn1fe/WebView2.Runtime/tree/master/Samples) directory.
 
-#### Build nupkg:
+### Build nupkg:
 1) Clone repository.
 2) Download latest .cab files from fixed version section and put in build directory (as in picture) - https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section.
 ![alt text](Pictures/1.png)
 3) Run build.ps1 and wait.
 
-#### Used tools:
+### Used tools:
 1) [nuget.exe](https://www.nuget.org/downloads) - nuget package builder.
 2) expand.exe - tool for unpack .cab files (taked from windows 10 system32 directory).
