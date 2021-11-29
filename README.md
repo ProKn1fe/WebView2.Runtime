@@ -1,6 +1,6 @@
-## Nuget packages for Microsoft WebView2 Fixed Runtime Distribution
+### Nuget packages for Microsoft WebView2 Fixed Runtime Distribution
 
-### Nuget packages:
+#### Nuget packages:
 | Platform | Architecture | Package Name | Version
 | --- | --- | --- | --- |
 | Windows | X86 | WebView2.Runtime.X86 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X86.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X86/) |
@@ -8,7 +8,7 @@
 | Windows | ARM64 | WebView2.Runtime.ARM64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.ARM64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) |
 | Windows | Any | WebView2.Runtime.AutoInstaller | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.AutoInstaller.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) |
 
-### Usage example:
+#### Usage example:
 1) Install via nuget selected architecture package.
 ```
 Install-Package WebView2.Runtime.X64
@@ -22,7 +22,7 @@ Controls.Add(webView);
 webView.CoreWebView2.Navigate("https://nuget.org/");
 ```
 
-### Automate runtime installer (this type doesen't need runtime packages, because runtime will be installed into system):
+#### Automate runtime installer (this type doesen't need runtime packages, because runtime will be installed into system):
 You can use my package to check current WebView2 runtime installed status and automate install it.
 This type of installation requires running the program as an administrator (or installer will request them independently).
 Source of this library [you can find here](https://github.com/ProKn1fe/WebView2.Runtime/tree/master/WebView2.Runtime.AutoInstaller).
@@ -42,11 +42,12 @@ await WebView2AutoInstaller.CheckAndInstallAsync(false, false);
 await WebView2AutoInstaller.CheckAndInstallAsync(false, false, "path");
 ```
 
-### Samples
+#### Samples
 
 You can found samples in [Samples](https://github.com/ProKn1fe/WebView2.Runtime/tree/master/Samples) directory.
+Also check official microsoft edge [samples repository](https://github.com/MicrosoftEdge/WebView2Samples).
 
-### Build nupkg:
+#### Build nupkg:
 1) Clone repository.
 2) Download latest .cab files from fixed version section and put in build directory (as in picture) - https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section.
 ![alt text](Pictures/1.png)
