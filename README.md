@@ -24,7 +24,9 @@ webView.CoreWebView2.Navigate("https://nuget.org/");
 
 ### Automate runtime installer example:
 You can use package WebView2.Runtime.AutoInstaller to check current WebView2 runtime installed status and automate install it.
-This type of installation requires running the program as an administrator (or installer will request them independently).
+
+This type of installation requires running the program as an administrator (or installer will request them independently) and ethernet connection.
+
 Source of this library [you can find here](https://github.com/ProKn1fe/WebView2.Runtime/tree/master/WebView2.Runtime.AutoInstaller).
 1) Install via nuget selected architecture package.
 ```
