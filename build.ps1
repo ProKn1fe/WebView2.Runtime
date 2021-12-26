@@ -1,5 +1,41 @@
 $files = Get-ChildItem $PSScriptRoot -Filter '*.cab';
-$nugetTemplate = "$PSScriptRoot\Template.nuspec"
+$nugetTemplate = "$PSScriptRoot\Template.nuspec";
+$webClient = New-Object System.Net.WebClient;
+$cabRegex = [Regex] '"http[^"]*(?<version>Runtime.[0-9.]*)\.[^"]*\.cab"';
+$webViewVersion = [Version] ('1.0');
+$downloadManually = 0 
+
+# Download .cab files manually if no one in build directory
+if ($files.Count -eq 0)
+{
+	Write-Output "WebView2 .cab files not found, trying to download it automatically"
+	$downloadPage = $webClient.DownloadString("https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section");
+	$cabFiles = $cabRegex.Matches($downloadPage);
+	# First we need get all versions from page and find latest
+	foreach ($version in $cabFiles)
+	{
+		$v = $version.Groups[1].Value.Replace('Runtime.', '');
+		$vv = [Version] ($v);
+		if ($vv -gt $webViewVersion)
+		{
+			$webViewVersion = $vv;
+		}
+	}
+	Write-Output "Select version: $webViewVersion"
+	foreach ($file in $cabFiles)
+	{
+		$url = $file.Value.Replace('"', '');
+		if (!$url.Contains($webViewVersion))
+		{
+			continue;
+		}
+		$fileName = [System.IO.Path]::GetFileName($url);
+		Write-Output "Downloading: $fileName"
+		$webClient.DownloadFile($url, "$PSScriptRoot\$fileName");
+	}
+	$downloadManually = 1
+}
+$files = Get-ChildItem $PSScriptRoot -Filter '*.cab';
 
 foreach ($file in $files)
 {
@@ -21,13 +57,22 @@ foreach ($file in $files)
 	
 	#Parse version from manifest
 	$version_file = Get-ChildItem "$output_path\contentFiles\" -Filter "*.manifest" -Recurse;
-	$version = $version_file[0].Name.Replace(".manifest", "");
+	$webViewVersion = $version_file[0].Name.Replace(".manifest", "");
 	
 	# Copy nuspec and replace vars
-	(Get-Content $nugetTemplate).Replace('%NAME%', $output_folder).Replace('%VERSION%', $version) | Set-Content "$output_path\$output_folder.nuspec";
+	(Get-Content $nugetTemplate).Replace('%NAME%', $output_folder).Replace('%VERSION%', $webViewVersion) | Set-Content "$output_path\$output_folder.nuspec";
 	
 	# Compile nupkg
 	cmd.exe /c "$PSScriptRoot\Utils\nuget.exe pack $output_path\$output_folder.nuspec";
 	
 	Remove-Item $output_path -Recurse -Force;
+}
+
+# Remove downloaded files
+if ($downloadManually -eq 1)
+{
+	foreach ($file in $files)
+	{
+		Remove-Item $file -Force;
+	}
 }
