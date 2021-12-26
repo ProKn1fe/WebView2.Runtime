@@ -51,9 +51,10 @@ Also check official microsoft edge [samples repository](https://github.com/Micro
 
 ### Build nupkg:
 1) Clone repository.
-2) Download latest .cab files from fixed version section and put in build directory (as in picture) - https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section.
+2) Run build.ps1 and wait.
+3) Or if you want to build with different WebView2 version download .cab files from fixed version section and put in build directory (as in picture) - https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section.
+
 ![alt text](Pictures/1.png)
-3) Run build.ps1 and wait.
 
 ### Used tools:
 1) [nuget.exe](https://www.nuget.org/downloads) - nuget package builder.
