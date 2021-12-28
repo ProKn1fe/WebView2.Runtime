@@ -3,7 +3,14 @@ $nugetTemplate = "$PSScriptRoot\Template.nuspec";
 $webClient = New-Object System.Net.WebClient;
 $cabRegex = [Regex] '"http[^"]*(?<version>Runtime.[0-9.]*)\.[^"]*\.cab"';
 $webViewVersion = [Version] ('1.0');
-$downloadManually = 0 
+$downloadManually = 0
+$checkNugetVersion = 0
+$publish = 0
+
+if ($args -match "-FetchVersionFromNuget")
+{
+	$checkNugetVersion = 1
+}
 
 # Download .cab files manually if no one in build directory
 if ($files.Count -eq 0)
@@ -21,7 +28,7 @@ if ($files.Count -eq 0)
 			$webViewVersion = $vv;
 		}
 	}
-	Write-Output "Select version: $webViewVersion"
+	Write-Output "Select version: $webViewVersion"	
 	foreach ($file in $cabFiles)
 	{
 		$url = $file.Value.Replace('"', '');
@@ -30,6 +37,23 @@ if ($files.Count -eq 0)
 			continue;
 		}
 		$fileName = [System.IO.Path]::GetFileName($url);
+		Write-Output "Package: $fileName"
+		if ($checkNugetVersion -eq 1)
+		{
+			Write-Output "Checking nuget version"
+			$name_split = $fileName.Split('.');
+			$arch = $name_split[$name_split.Length - 2].ToUpper();
+			$packageName = "WebView2.Runtime.$arch";
+			$nugetOutput = & "$PSScriptRoot\Utils\nuget.exe" "list" "$packageName";
+			$nugetPackagesInfo = $nugetOutput | Select-String -Pattern $packageName | Select-Object -Last 1;
+			$nugetVersion = $nugetPackagesInfo.ToString().Split(' ')[1];
+			Write-Output "Nuget version: $nugetVersion";
+			if ([Version] $nugetVersion -ge [Version] $webViewVersion)
+			{
+				Write-Output "Nuget version >= microsoft website version, skipping";
+				continue;
+			}
+		}
 		Write-Output "Downloading: $fileName"
 		$webClient.DownloadFile($url, "$PSScriptRoot\$fileName");
 	}
@@ -74,5 +98,16 @@ if ($downloadManually -eq 1)
 	foreach ($file in $files)
 	{
 		Remove-Item $file -Force;
+	}
+}
+
+$files = Get-ChildItem $PSScriptRoot -Filter "*$webViewVersion.nupkg";
+
+if ($args -match "-Publish")
+{
+	foreach ($file in $files)
+	{
+		Write-Output "Publish $file"
+		cmd.exe /c "$PSScriptRoot\publish.ps1 $file";
 	}
 }
