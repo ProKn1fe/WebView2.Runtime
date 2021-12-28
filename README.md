@@ -28,7 +28,7 @@ You can use package WebView2.Runtime.AutoInstaller to check current WebView2 run
 This type of installation requires running the program as an administrator (or installer will request them independently) and ethernet connection.
 
 Source of this library [you can find here](https://github.com/ProKn1fe/WebView2.Runtime/tree/master/WebView2.Runtime.AutoInstaller).
-1) Install via nuget selected architecture package.
+1) Install via nuget.
 ```
 Install-Package WebView2.Runtime.AutoInstaller
 ```
