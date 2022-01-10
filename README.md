@@ -1,12 +1,12 @@
 ## Nuget packages for Microsoft WebView2 Fixed Runtime Distribution
 
 ### Nuget packages:
-| Platform | Architecture | Package Name | Version
-| --- | --- | --- | --- |
-| Windows | X86 | WebView2.Runtime.X86 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X86.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X86/) |
-| Windows | X64 | WebView2.Runtime.X64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X64/) |
-| Windows | ARM64 | WebView2.Runtime.ARM64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.ARM64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) |
-| Windows | Any | WebView2.Runtime.AutoInstaller | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.AutoInstaller.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) |
+| Platform | Architecture | Package Name | Version | Downloads
+| --- | --- | --- | --- | --- |
+| Windows | X86 | WebView2.Runtime.X86 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X86.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X86/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X86)](https://www.nuget.org/packages/WebView2.Runtime.X86/) |
+| Windows | X64 | WebView2.Runtime.X64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X64/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X64)](https://www.nuget.org/packages/WebView2.Runtime.X64/) |
+| Windows | ARM64 | WebView2.Runtime.ARM64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.ARM64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.ARM64)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) |
+| Windows | Any | WebView2.Runtime.AutoInstaller | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.AutoInstaller.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.AutoInstaller)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) |
 
 ### Runtime packages usage example:
 1) Install via nuget selected architecture package.
