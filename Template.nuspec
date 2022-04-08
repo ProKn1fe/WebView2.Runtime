@@ -10,11 +10,12 @@
 	<projectUrl>https://github.com/ProKn1fe/WebView2.Runtime</projectUrl>
     <description>Webview2 runtime for Fixed Version distribution.
 
-	Example usage:
-    var webView = new WebView2() { Dock = DockStyle.Fill };
-    await webView.EnsureCoreWebView2Async(await CoreWebView2Environment.CreateAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WebView2")));
-    Controls.Add(webView);
-    webView.CoreWebView2.Navigate("https://nuget.org");</description>
+		Example usage:
+		var webView = new WebView2() { Dock = DockStyle.Fill };
+		await webView.EnsureCoreWebView2Async(await CoreWebView2Environment.CreateAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WebView2")));
+		Controls.Add(webView);
+		webView.CoreWebView2.Navigate("https://nuget.org");
+	</description>
     <dependencies>
       <dependency id="Microsoft.Web.WebView2" version="1.0.1150.38" />
     </dependencies>
