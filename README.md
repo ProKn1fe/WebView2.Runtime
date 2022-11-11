@@ -58,4 +58,4 @@ Also check official microsoft edge [samples repository](https://github.com/Micro
 
 ### Used tools:
 1) [nuget.exe](https://www.nuget.org/downloads) - nuget package builder.
-2) expand.exe - tool for unpack .cab files (taked from windows 10 system32 directory).
+2) expand.exe - tool for unpack .cab files (taked from windows 11 system32 directory).
