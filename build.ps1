@@ -85,6 +85,8 @@ foreach ($file in $files)
 	
 	# Copy nuspec and replace vars
 	(Get-Content $nugetTemplate).Replace('%NAME%', $output_folder).Replace('%VERSION%', $webViewVersion) | Set-Content "$output_path\$output_folder.nuspec";
+	# Copy license file
+	Copy-Item "$PSScriptRoot\LICENSE.txt" -Destination "$output_path\LICENSE.txt";
 	
 	# Compile nupkg
 	cmd.exe /c "$PSScriptRoot\Utils\nuget.exe pack $output_path\$output_folder.nuspec";

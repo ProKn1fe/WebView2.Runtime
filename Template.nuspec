@@ -8,6 +8,7 @@
     <owners></owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<projectUrl>https://github.com/ProKn1fe/WebView2.Runtime</projectUrl>
+	<license type="file">LICENSE.txt</license>
     <description>Webview2 runtime for Fixed Version distribution.
 
 		Example usage:
