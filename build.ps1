@@ -110,6 +110,6 @@ if ($args -match "-Publish")
 	foreach ($file in $files)
 	{
 		Write-Output "Publish $file"
-		cmd.exe /c "$PSScriptRoot\publish.ps1 $file";
+		powershell.exe -File "$PSScriptRoot\publish.ps1" -Command $file;
 	}
 }
