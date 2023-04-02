@@ -17,10 +17,16 @@ jobs:
     - name: Clone repository
       uses: actions/checkout@v3
     - name: Run download command
-      run: .\build.ps1
-      #run: .\build.ps1 -FetchVersionFromNuget
+      run: .\build.ps1 -FetchVersionFromNuget
     - name: Collect result
       uses: actions/upload-artifact@v3
       with:
         name: nupkg
         path: ${{ github.workspace }}\*.nupkg
+    - name: Publish to nuget
+      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+      with:
+        nupkg-path: './*.nupkg'
+        repo-owner: 'ProKn1fe'
+        gh-user: 'ProKn1fe'
+        token:  ${{ secrets.NUGET_KEY }}
