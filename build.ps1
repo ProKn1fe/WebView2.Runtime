@@ -107,9 +107,5 @@ $files = Get-ChildItem $PSScriptRoot -Filter "*$webViewVersion.nupkg";
 
 if ($args -match "-Publish")
 {
-	foreach ($file in $files)
-	{
-		Write-Output "Publish $file"
-		powershell.exe -File "$PSScriptRoot\publish.ps1" -Command $file;
-	}
+	powershell.exe -File "$PSScriptRoot\publish.ps1";
 }
