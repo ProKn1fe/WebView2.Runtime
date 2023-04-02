@@ -24,9 +24,6 @@ jobs:
         name: nupkg
         path: ${{ github.workspace }}\*.nupkg
     - name: Publish to nuget
-      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
-      with:
-        nupkg-path: './*.nupkg'
-        repo-owner: 'ProKn1fe'
-        gh-user: 'ProKn1fe'
-        token:  ${{ secrets.NUGET_KEY }}
+      run: .\publish.ps1
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.NUGET_KEY}}
