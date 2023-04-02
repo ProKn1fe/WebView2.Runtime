@@ -4,13 +4,13 @@ name: Autobuild .cab test
 on:
   schedule:
   - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   # Job name
   build-cab:
     # Run on windows
     runs-on: windows-latest
-
     steps:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
