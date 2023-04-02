@@ -19,8 +19,8 @@ jobs:
     - name: Run download command
       run: .\build.ps1
       #run: .\build.ps1 -FetchVersionFromNuget
-      # Why i can't collect it by *.nupkg mask?
     - name: Collect result
       uses: actions/upload-artifact@v3
       with:
         name: nupkg
+        path: *.nupkg
