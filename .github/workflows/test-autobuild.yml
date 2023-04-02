@@ -1,0 +1,26 @@
+name: Autobuild .cab test
+
+# Auto build every day at 00:00
+on:
+  schedule:
+  - cron: "0 0 * * *"
+
+jobs:
+  # Job name
+  build-cab:
+    # Run on windows
+    runs-on: windows-latest
+
+    steps:
+    - name: Send greeting
+      run: echo "Hello ${{ github.event.inputs.name }}"
+    - name: Clone repository
+      uses: actions/checkout@v3
+    - name: Run download command
+      run: .\build.ps1
+      #run: .\build.ps1 -FetchVersionFromNuget
+      # Why i can't collect it by *.nupkg mask?
+    - name: Collect result
+      uses: actions/upload-artifact@v3
+      with:
+        name: nupkg
