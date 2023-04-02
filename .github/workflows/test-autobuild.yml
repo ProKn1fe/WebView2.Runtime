@@ -23,4 +23,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: nupkg
-        path: /
+        path: ${{ github.workspace }}\*.nupkg
