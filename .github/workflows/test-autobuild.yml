@@ -24,7 +24,7 @@ jobs:
       with:
         name: nupkg
         path: ${{ github.workspace }}\*.nupkg
+    - name: Set nuget api key
+      run: utils/nuget.exe setapikey ${{secrets.NUGET_KEY}}
     - name: Publish to nuget
       run: .\publish.ps1
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.NUGET_KEY}}
