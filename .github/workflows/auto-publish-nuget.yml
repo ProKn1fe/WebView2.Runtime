@@ -8,7 +8,7 @@ on:
 
 jobs:
   # Job name
-  build-cab:
+  build-nupkg:
     # Run on windows
     runs-on: windows-latest
     steps:
