@@ -32,6 +32,7 @@ if ($files.Count -eq 0)
 	foreach ($file in $cabFiles)
 	{
 		$url = $file.Value.Replace('"', '');
+		$url = $url.Replace('\u002F', '/');
 		if (!$url.Contains($webViewVersion))
 		{
 			continue;
