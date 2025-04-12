@@ -18,7 +18,7 @@
 		webView.CoreWebView2.Navigate("https://nuget.org");
 	</description>
     <dependencies>
-      <dependency id="Microsoft.Web.WebView2" version="1.0.1587.40" />
+      <dependency id="Microsoft.Web.WebView2" version="*" />
     </dependencies>
 	<contentFiles>
 		<files include="any/any/**/*.*" buildAction="none" copyToOutput="true" />
