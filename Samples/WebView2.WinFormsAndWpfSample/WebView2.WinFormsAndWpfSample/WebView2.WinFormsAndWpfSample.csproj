@@ -10,7 +10,8 @@
 
 	<ItemGroup>
 	  <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" PrivateAssets="All" />
-	  <PackageReference Include="WebView2.Runtime.X64" Version="135.0.3179.73" />
+	  <PackageReference Include="WebView2.Runtime.Locales" Version="137.0.3296.52" />
+	  <PackageReference Include="WebView2.Runtime.X64" Version="137.0.3296.52" />
 	</ItemGroup>
 
 </Project>
