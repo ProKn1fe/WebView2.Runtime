@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>WebView2.Runtime.Locales</id>
+    <version>%VERSION%</version>
+    <title>WebView2.Runtime.Locales</title>
+    <authors>ProKn1fe</authors>
+    <owners></owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<projectUrl>https://github.com/ProKn1fe/WebView2.Runtime</projectUrl>
+	<license type="file">LICENSE.txt</license>
+    <description>Webview2 locales files.
+	</description>
+	<contentFiles>
+		<files include="any/any/**/*.*" buildAction="none" copyToOutput="true" />
+	</contentFiles>
+  </metadata>
+</package>

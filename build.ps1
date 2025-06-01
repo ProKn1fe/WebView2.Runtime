@@ -1,11 +1,12 @@
 $files = Get-ChildItem $PSScriptRoot -Filter '*.cab';
 $nugetTemplate = "$PSScriptRoot\Template.nuspec";
+$nugetLocalesTemplate = "$PSScriptRoot\Template.Locales.nuspec";
 $webClient = New-Object System.Net.WebClient;
 $cabRegex = [Regex] '"http[^"]*(?<version>Runtime.[0-9.]*)\.[^"]*\.cab"';
 $webViewVersion = [Version] ('1.0');
 $downloadManually = 0
 $checkNugetVersion = 0
-$publish = 0
+$buildLangFiles = 1
 
 if ($args -match "-FetchVersionFromNuget")
 {
@@ -83,6 +84,34 @@ foreach ($file in $files)
 	#Parse version from manifest
 	$version_file = Get-ChildItem "$output_path\contentFiles\" -Filter "*.manifest" -Recurse;
 	$webViewVersion = $version_file[0].Name.Replace(".manifest", "");
+	
+	if ($buildLangFiles -eq 1)
+	{
+		$locales_output_path = "$PSScriptRoot\WebView2.Runtime.Locales";
+		$locales_output_folder = "WebView2.Runtime.Locales";
+		
+		# Remove exists directory
+		if (Test-Path $locales_output_path) { Remove-Item $locales_output_path -Recurse -Force; }
+		New-Item -ItemType Directory -Force -Path "$locales_output_path\contentFiles\any\any\WebView2";
+		
+		Copy-Item -Recurse "$output_path\contentFiles\any\any\WebView2\Locales" "$locales_output_path\contentFiles\any\any\WebView2";
+		
+		# Copy nuspec and replace vars
+		(Get-Content $nugetLocalesTemplate).Replace('%VERSION%', $webViewVersion) | Set-Content "$locales_output_path\$locales_output_folder.nuspec";
+		# Copy license file
+		Copy-Item "$PSScriptRoot\LICENSE.txt" -Destination "$locales_output_path\LICENSE.txt";
+		# Copy readme
+		Copy-Item "$PSScriptRoot\README.md" -Destination "$locales_output_path\README";
+		
+		# Compile nupkg
+		cmd.exe /c "$PSScriptRoot\Utils\nuget.exe pack $locales_output_path\$locales_output_folder.nuspec";
+		
+		Remove-Item $locales_output_path -Recurse -Force;
+		$buildLangFiles = 0;
+	}
+	
+	# Delete all locales except english
+	Remove-Item "$output_path\contentFiles\any\any\WebView2\Locales\*" -Exclude "en-US.*" -Recurse -Force;
 	
 	# Copy nuspec and replace vars
 	(Get-Content $nugetTemplate).Replace('%NAME%', $output_folder).Replace('%VERSION%', $webViewVersion) | Set-Content "$output_path\$output_folder.nuspec";
