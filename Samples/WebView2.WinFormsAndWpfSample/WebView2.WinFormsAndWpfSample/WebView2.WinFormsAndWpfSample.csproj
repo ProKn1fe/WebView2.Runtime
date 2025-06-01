@@ -9,9 +9,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="microsoft.web.webview2" Version="1.0.1020.30" />
 	  <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" PrivateAssets="All" />
-	  <PackageReference Include="WebView2.Runtime.X64" Version="96.0.1054.29" />
+	  <PackageReference Include="WebView2.Runtime.X64" Version="135.0.3179.73" />
 	</ItemGroup>
 
 </Project>
