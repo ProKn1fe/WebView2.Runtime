@@ -6,7 +6,12 @@
 | Windows | X86 | WebView2.Runtime.X86 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X86.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X86/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X86)](https://www.nuget.org/packages/WebView2.Runtime.X86/) |
 | Windows | X64 | WebView2.Runtime.X64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X64/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X64)](https://www.nuget.org/packages/WebView2.Runtime.X64/) |
 | Windows | ARM64 | WebView2.Runtime.ARM64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.ARM64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.ARM64)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) |
+| Windows | Any | WebView2.Runtime.Locales | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.Locales.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.Locales/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.Locales)](https://www.nuget.org/packages/WebView2.Runtime.Locales/) |
 | Windows | Any | WebView2.Runtime.AutoInstaller | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.AutoInstaller.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.AutoInstaller)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) |
+
+### WebView2.Runtime.Locales
+Since version 137.0.3296.52 WebView2 no more fits in nuget limit of 250 megabytes, so to reduce package size runtime contains only english language.
+If you want all others languages, just install WebView2.Runtime.Locales package.
 
 ### Runtime packages usage example:
 1) Install via nuget selected architecture package.
