@@ -19,7 +19,6 @@
 	</description>
     <dependencies>
       <dependency id="Microsoft.Web.WebView2" version="1.0.2957.106" />
-      <dependency id="%NAME%.Library" version="%VERSION%" />
     </dependencies>
 	<contentFiles>
 		<files include="any/any/**/*.*" buildAction="none" copyToOutput="true" />

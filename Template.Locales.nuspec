@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
-    <id>%NAME%.Library</id>
+    <id>WebView2.Runtime.Locales</id>
     <version>%VERSION%</version>
-    <title>%NAME%</title>
+    <title>WebView2.Runtime.Locales</title>
     <authors>ProKn1fe</authors>
     <owners></owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
