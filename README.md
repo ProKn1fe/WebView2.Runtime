@@ -9,9 +9,9 @@
 | Windows | Any | WebView2.Runtime.Locales | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.Locales.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.Locales/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.Locales)](https://www.nuget.org/packages/WebView2.Runtime.Locales/) |
 | Windows | Any | WebView2.Runtime.AutoInstaller | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.AutoInstaller.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.AutoInstaller)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) |
 
-### WebView2.Runtime.Locales
-Since version 137.0.3296.52 WebView2 no more fits in nuget limit of 250 megabytes, so to reduce package size runtime now contains only english language.
-If you want all others languages, just install WebView2.Runtime.Locales package.
+### WebView2.Runtime.Library
+Since version 148.0.3967.96 to fit in nuget package size limit of 250 megabytes, package now splits into two packages WebView2.Runtime and WebView2.Runtime.Library.
+WebView2.Runtime.Library installs automaticly as depency of main WebView2.Runtime package.
 
 ### Runtime packages usage example:
 1) Install via nuget selected architecture package.
