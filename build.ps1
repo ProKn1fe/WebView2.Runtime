@@ -110,6 +110,15 @@ foreach ($file in $files)
 		$buildLangFiles = 0;
 	}
 	
+	# Cleanup some useless files to save space
+	# Copilot - useless AI
+	# DirectX files exists in windows for ages
+	$uselessFiles = @("copilot", "dxcompiler", "d3dcompiler");
+	foreach ($uf in $uselessFiles)
+	{
+		Get-ChildItem -Path "$output_path\contentFiles\any\any\WebView2\*" -Recurse | Where-Object { $_.Name -like "*$uf*" } | Remove-Item -Force
+	}
+	
 	# Delete all locales except english
 	Remove-Item "$output_path\contentFiles\any\any\WebView2\Locales\*" -Exclude "en-US.*" -Recurse -Force;
 	
