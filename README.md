@@ -3,20 +3,25 @@
 ### Nuget packages:
 | Platform | Architecture | Package Name | Version | Downloads
 | --- | --- | --- | --- | --- |
-| Windows | X86 | WebView2.Runtime.X86 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X86.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X86/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X86)](https://www.nuget.org/packages/WebView2.Runtime.X86/) |
-| Windows | X64 | WebView2.Runtime.X64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X64/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X64)](https://www.nuget.org/packages/WebView2.Runtime.X64/) |
-| Windows | ARM64 | WebView2.Runtime.ARM64 | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.ARM64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.ARM64)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) |
+| Windows | X86 | WebView2.Runtime.X86 <br /> WebView2.Runtime.X86.Core | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X86.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X86/) <br /> [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X86.Core.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X86/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X86)](https://www.nuget.org/packages/WebView2.Runtime.X86/) <br /> [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X86)](https://www.nuget.org/packages/WebView2.Runtime.X86.Core/) |
+| Windows | X64 | WebView2.Runtime.X64 <br /> WebView2.Runtime.X64.Core | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X64/) <br /> [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.X64.Core.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.X64/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X64)](https://www.nuget.org/packages/WebView2.Runtime.X64/) <br /> [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.X64)](https://www.nuget.org/packages/WebView2.Runtime.X64.Core/) |
+| Windows | ARM64 | WebView2.Runtime.ARM64 <br /> WebView2.Runtime.ARM64.Core | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.ARM64.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) <br /> [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.ARM64.Core.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.ARM64)](https://www.nuget.org/packages/WebView2.Runtime.ARM64/) <br /> [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.ARM64)](https://www.nuget.org/packages/WebView2.Runtime.ARM64.Core/) |
 | Windows | Any | WebView2.Runtime.Locales | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.Locales.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.Locales/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.Locales)](https://www.nuget.org/packages/WebView2.Runtime.Locales/) |
 | Windows | Any | WebView2.Runtime.AutoInstaller | [![NuGet](https://img.shields.io/nuget/v/WebView2.Runtime.AutoInstaller.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) | [![NuGet](https://img.shields.io/nuget/dt/WebView2.Runtime.AutoInstaller)](https://www.nuget.org/packages/WebView2.Runtime.AutoInstaller/) |
+
+### WebView2.Runtime.Core
+Since version 152.0.4191.53 WebView2 no more fits in nuget limit of 250 megabytes, so to somehow fit in this limit now it splitted into 2 packages.
+Now you REQUIRE to install both WebView2.Runtime.Arch and WebView2.Runtime.Arch.Core packages.
 
 ### WebView2.Runtime.Locales
 Since version 137.0.3296.52 WebView2 no more fits in nuget limit of 250 megabytes, so to reduce package size runtime now contains only english language.
 If you want all others languages, just install WebView2.Runtime.Locales package.
 
 ### Runtime packages usage example:
-1) Install via nuget selected architecture package.
+1) Install via nuget selected architecture package. *(It's nesessary to install both packages!)*
 ```
 Install-Package WebView2.Runtime.X64
+Install-Package WebView2.Runtime.X64.Core
 ```
 2) Make sure what in you project appears folder WebView2 and all files marked as "Copy To Output".
 3) Initialize webview2 before usage, path must be to WebView2 directory. In most cases it must be in application directory.
