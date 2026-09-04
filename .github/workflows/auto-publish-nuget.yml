@@ -7,16 +7,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Job name
   build-nupkg:
-    # Run on windows
+    permissions:
+      id-token: write
     runs-on: windows-latest
     steps:
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ProKn1fe
     - name: Clone repository
       uses: actions/checkout@v3
     - name: Download and pack .nupkg
       run: .\build.ps1 -FetchVersionFromNuget
     - name: Set nuget api key
-      run: utils/nuget.exe setapikey ${{secrets.NUGET_KEY}}
+      run: utils/nuget.exe setapikey ${{steps.login.outputs.NUGET_API_KEY}}
     - name: Publish to nuget
       run: .\publish.ps1
