@@ -1,18 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
-  <metadata>
-    <id>%NAME%</id>
-    <title>%NAME%</title>
-    <version>%VERSION%</version>
-    <authors>ProKn1fe</authors>
-    <owners></owners>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-	<projectUrl>https://github.com/ProKn1fe/WebView2.Runtime</projectUrl>
-	<license type="file">LICENSE.txt</license>
-    <description>Webview2 core DLL files.
-	</description>
-	<contentFiles>
-		<files include="any/any/**/*.*" buildAction="none" copyToOutput="true" />
-	</contentFiles>
-  </metadata>
+	<metadata>
+		<id>%NAME%</id>
+		<title>%NAME%</title>
+		<version>%VERSION%</version>
+		<authors>ProKn1fe</authors>
+		<owners></owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<projectUrl>https://github.com/ProKn1fe/WebView2.Runtime</projectUrl>
+		<license type="file">LICENSE.txt</license>
+		<readme>README.md</readme>
+		<description>Webview2 core DLL files.</description>
+		<contentFiles>
+			<files include="any/any/**/*.*" buildAction="none" copyToOutput="true" />
+		</contentFiles>
+	</metadata>
+    <files>
+		<file src="contentFiles\**\*.*" target="contentFiles" />
+		<file src="..\README.md" target="\" />
+		<file src="..\LICENSE.txt" target="\" />
+    </files>
 </package>

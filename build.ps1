@@ -113,7 +113,7 @@ foreach ($file in $files)
 		# Copy license file
 		Copy-Item "$PSScriptRoot\LICENSE.txt" -Destination "$locales_output_path\LICENSE.txt";
 		# Copy readme
-		Copy-Item "$PSScriptRoot\README.md" -Destination "$locales_output_path\README";
+		Copy-Item "$PSScriptRoot\README.md" -Destination "$locales_output_path\README.md";
 		
 		# Compile nupkg
 		cmd.exe /c "$PSScriptRoot\Utils\nuget.exe pack $locales_output_path\$locales_output_folder.nuspec";
