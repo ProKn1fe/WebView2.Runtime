@@ -116,7 +116,7 @@ foreach ($file in $files)
 	$uselessFiles = @("copilot", "dxcompiler", "d3dcompiler");
 	foreach ($uf in $uselessFiles)
 	{
-		Get-ChildItem -Path "$output_path\contentFiles\any\any\WebView2\*" -Recurse | Where-Object { $_.Name -like "*$uf*" } | Remove-Item -Force
+		Get-ChildItem -Path "$output_path\contentFiles\any\any\WebView2\*" -Recurse | Where-Object { $_.Name -like "*$uf*" } | Remove-Item -Force -Recurse
 	}
 	
 	# Delete all locales except english
