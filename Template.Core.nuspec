@@ -9,18 +9,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<projectUrl>https://github.com/ProKn1fe/WebView2.Runtime</projectUrl>
 	<license type="file">LICENSE.txt</license>
-    <description>Webview2 runtime for Fixed Version distribution.
-
-		Example usage:
-		var webView = new WebView2() { Dock = DockStyle.Fill };
-		await webView.EnsureCoreWebView2Async(await CoreWebView2Environment.CreateAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WebView2")));
-		Controls.Add(webView);
-		webView.CoreWebView2.Navigate("https://nuget.org");
+    <description>Webview2 core DLL files.
 	</description>
-    <dependencies>
-      <dependency id="Microsoft.Web.WebView2" version="1.0.3967.48" />
-      <dependency id="%NAME%.Core" version="%VERSION%" />
-    </dependencies>
 	<contentFiles>
 		<files include="any/any/**/*.*" buildAction="none" copyToOutput="true" />
 	</contentFiles>

@@ -2,16 +2,17 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net6.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>
 		<NoWarn>CS0067</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" PrivateAssets="All" />
-	  <PackageReference Include="WebView2.Runtime.Locales" Version="149.0.4022.98" />
-	  <PackageReference Include="WebView2.Runtime.X64" Version="149.0.4022.98" />
+	  <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="All" />
+	  <PackageReference Include="WebView2.Runtime.Locales" Version="152.0.4191.53" />
+	  <PackageReference Include="WebView2.Runtime.X64" Version="152.0.4191.53" />
+	  <PackageReference Include="WebView2.Runtime.X64.Core" Version="152.0.4191.53" />
 	</ItemGroup>
 
 </Project>

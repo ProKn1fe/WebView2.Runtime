@@ -1,9 +1,12 @@
 $files = Get-ChildItem $PSScriptRoot -Filter '*.cab';
-$nugetTemplate = "$PSScriptRoot\Template.nuspec";
-$nugetLocalesTemplate = "$PSScriptRoot\Template.Locales.nuspec";
 $webClient = New-Object System.Net.WebClient;
 $cabRegex = [Regex] '"http[^"]*(?<version>Runtime.[0-9.]*)\.[^"]*\.cab"';
 $webViewVersion = [Version] ('1.0');
+
+$nugetTemplate = "$PSScriptRoot\Template.nuspec";
+$nugetCoreTemplate = "$PSScriptRoot\Template.Core.nuspec";
+$nugetLocalesTemplate = "$PSScriptRoot\Template.Locales.nuspec";
+
 $downloadManually = 0
 $checkNugetVersion = 0
 $buildLangFiles = 1
@@ -71,15 +74,24 @@ foreach ($file in $files)
 	$output_path = "$PSScriptRoot\WebView2.Runtime.$arch";
 	$output_folder = "WebView2.Runtime.$arch";
 	
+	$core_output_path = "$PSScriptRoot\WebView2.Runtime.$arch.Core";
+	$core_output_folder = "WebView2.Runtime.$arch.Core";
+	
 	# Remove exists directory
 	if (Test-Path $output_path) { Remove-Item $output_path -Recurse -Force; }
 	New-Item -ItemType Directory -Force -Path "$output_path\contentFiles\any\any\";
+	
+	if (Test-Path $core_output_path) { Remove-Item $core_output_path -Recurse -Force; }
+	New-Item -ItemType Directory -Force -Path "$core_output_path\contentFiles\any\any\WebView2\";
 	
 	# Unpack cab
 	cmd.exe /c "$PSScriptRoot\Utils\expand.exe -F:* $($file.FullName) $output_path\contentFiles\any\any\";
 	
 	# Now we need rename folder in content directory
 	Get-ChildItem "$output_path\contentFiles\any\any\" -Directory | Rename-Item -NewName "WebView2";
+	
+	# Move msedge.dll to Core package
+	Move-Item "$output_path\contentFiles\any\any\WebView2\msedge.dll" "$core_output_path\contentFiles\any\any\WebView2";
 	
 	#Parse version from manifest
 	$version_file = Get-ChildItem "$output_path\contentFiles\" -Filter "*.manifest" -Recurse;
@@ -129,10 +141,19 @@ foreach ($file in $files)
 	# Copy readme
 	Copy-Item "$PSScriptRoot\README.md" -Destination "$output_path\README";
 	
+	# Copy nuspec and replace vars for Core
+	(Get-Content $nugetCoreTemplate).Replace('%NAME%', $core_output_folder).Replace('%VERSION%', $webViewVersion) | Set-Content "$core_output_path\$core_output_folder.nuspec";
+	# Copy license file
+	Copy-Item "$PSScriptRoot\LICENSE.txt" -Destination "$core_output_path\LICENSE.txt";
+	# Copy readme
+	Copy-Item "$PSScriptRoot\README.md" -Destination "$core_output_path\README";
+	
 	# Compile nupkg
 	cmd.exe /c "$PSScriptRoot\Utils\nuget.exe pack $output_path\$output_folder.nuspec";
+	cmd.exe /c "$PSScriptRoot\Utils\nuget.exe pack $core_output_path\$core_output_folder.nuspec";
 	
 	Remove-Item $output_path -Recurse -Force;
+	Remove-Item $core_output_path -Recurse -Force;
 }
 
 # Remove downloaded files
